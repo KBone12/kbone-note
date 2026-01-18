@@ -43,6 +43,8 @@ async function main() {
     const abs = path.join(PUBLIC_DIR, rel);
     await renderMathJax(abs, tex, chtml, adaptor);
   }
+  await fs.rm(path.join(PUBLIC_DIR, "vendor", "mathjax"), { recursive: true });
+  await fs.rm(path.join(PUBLIC_DIR, "katex"), { recursive: true, force: true });
 }
 
 main().catch(e => {
