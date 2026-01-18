@@ -31,7 +31,7 @@ async function renderMathJax(filePath, tex, chtml, adaptor) {
 
 async function main() {
   const adaptor = liteAdaptor();
-  RegisterHTMLHandler(adaptor);
+  const handler = RegisterHTMLHandler(adaptor);
   console.log("handlers:", mathjax.handlers.items.length, "handler:", handler?.name);
 
   const tex = new TeX({
