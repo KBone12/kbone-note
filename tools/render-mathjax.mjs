@@ -11,11 +11,6 @@ import "@mathjax/src/js/input/tex/ams/AmsConfiguration.js";
 async function renderMathJax(filePath, tex, chtml, adaptor) {
   const original = await fs.readFile(filePath, "utf-8");
 
-  {
-    const doc = adaptor.parse(original, "text/html");
-    console.log("parse ok:", doc instanceof adaptor.window.Document);
-  }
-
   const mathjaxDoc = mathjax.document(original, {
     InputJax: tex,
     OutputJax: chtml,
@@ -31,8 +26,7 @@ async function renderMathJax(filePath, tex, chtml, adaptor) {
 
 async function main() {
   const adaptor = liteAdaptor();
-  const handler = RegisterHTMLHandler(adaptor);
-  console.log("handlers:", mathjax.handlers.items.length, "handler:", handler?.name);
+  RegisterHTMLHandler(adaptor);
 
   const tex = new TeX({
     packages: { "[+]": ["ams"] },
