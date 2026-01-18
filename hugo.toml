@@ -1,4 +1,31 @@
 baseURL = 'https://example.org/'
-languageCode = 'ja-jp'
+enableGitInfo = true
+languageCode = 'ja-JP'
+theme = 'hugo-book'
+timeZone = 'Asia/Tokyo'
 title = "kbone's note"
-theme = "hugo-book"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [
+            ['\[', '\]'],
+            ['\begin{equation}', '\end{equation}'],
+            ['\begin{equation*}', '\end{equation*}'],
+          ]
+          inline = [['\(', '\)']]
+
+[module]
+  [[module.mounts]]
+    source = 'node_modules/@mathjax/src/bundle'
+    target = 'static/vendor/mathjax'
+  [[module.mounts]]
+    source = 'node_modules/@mathjax/mathjax-newcm-font/chtml/woff2'
+    target = 'static/vendor/mathjax-newcm-font/chtml/woff2'
+
+[params]
+  BookTheme = 'auto'
+  BookDateFormat = '2006-01-02'

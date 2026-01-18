@@ -1,0 +1,16 @@
+{
+  "name": "kbone-note",
+  "version": "0.0.0",
+  "description": "kbone's note",
+  "license": "ISC",
+  "author": "kbone",
+  "type": "module",
+  "scripts": {
+    "hugo:build": "hugo",
+    "mathjax:render": "node tools/render-mathjax.mjs",
+    "build": "npm run hugo:build && npm run mathjax:render"
+  },
+  "dependencies": {
+    "@mathjax/src": "^4.1.0"
+  }
+}
