@@ -85,7 +85,7 @@ jobs:
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Render MathJax
         run: |
-          npm run mathjax:render
+          npm run mathjax:render -- "${{ steps.pages.outputs.base_url }}"
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v5

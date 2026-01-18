@@ -27,6 +27,7 @@ async function renderMathJax(filePath, tex, chtml, adaptor) {
 async function main() {
   const adaptor = liteAdaptor();
   RegisterHTMLHandler(adaptor);
+  const baseURL = (process.argv[2] ?? "").replace(/\/$/, "");
 
   const tex = new TeX({
     packages: { "[+]": ["ams"] },
@@ -35,7 +36,7 @@ async function main() {
     inlineMath: [["\\(", "\\)"]],
   });
   const chtml = new CHTML({
-    fontURL: "/vendor/mathjax-newcm-font/chtml/woff2",
+    fontURL: `${baseURL}/vendor/mathjax-newcm-font/chtml/woff2`,
   });
 
   const PUBLIC_DIR = path.resolve(process.cwd(), "public");
