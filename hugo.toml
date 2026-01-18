@@ -5,6 +5,10 @@ theme = 'hugo-book'
 timeZone = 'Asia/Tokyo'
 title = "kbone's note"
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]
